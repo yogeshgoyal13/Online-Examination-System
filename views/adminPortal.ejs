@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta Tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap CSS -->
+        <link 
+            rel="stylesheet" 
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
+            crossorigin="anonymous"
+        >
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/CSS/adminPortal.css">
+
+        <title>Admin Portal</title>
+    </head>
+    <body>
+        
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-dark bg-primary fixed-top">
+			<a class="navbar-brand" href="#">
+				<h4>
+					ExamSecure
+				</h4>
+			</a>
+        </nav>
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-link-wrapper">
+                <a href="#" class="sidebar-link">A</a>
+            </div>
+            <br>
+            <div class="sidebar-link-wrapper">
+                <a href="#" class="sidebar-link">B</a>
+            </div>
+            <br>
+            <div class="sidebar-link-wrapper">
+                <a href="#" class="sidebar-link">C</a>
+            </div>
+        </div>
+
+        <!-- Content goes here -->
+        <div class="main">
+            <p class="schedule-exam-para">Welcome Professor, <%= user.name %></p>
+
+            <form action="/createExam" method="POST">
+                <button type="submit" name="submitButton" value="<%= user.adminId %>">Create New Exam</button>
+            </form>
+
+            <form action="" method="POST">
+                <button type="submit">Modify An Exam</button>
+            </form>
+
+            <form action="" method="POST">
+                <button type="submit">View Results</button>
+            </form>
+        </div>
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script 
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+            crossorigin="anonymous"
+        ></script>
+        <script 
+             src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" 
+            crossorigin="anonymous"
+        ></script>
+        <script 
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

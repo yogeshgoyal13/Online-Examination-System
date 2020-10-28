@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #14213D;
+    width: 145px;
+    height: 100vh;
+    position: fixed;
+    padding-top: 150px;
+    text-align: center;
+}
+
+.sidebar-link {
+    color: white;
+}
+
+.sidebar-link:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar-link-wrapper {
+    margin: 0 20px;
+    padding: 10px 0;
+}
+
+.sidebar-link-wrapper:hover {
+    background-color: #007bff!important;
+}
+
+/* Main */
+.main {
+    padding: 70px 10px 0 158px;
+}
+
+.schedule-exam-para {
+    margin-left: 20px;
+}
+
+/* Test Div */
+.test-wrapper {
+    background-color: #E5E5E5;
+    padding: 20px;
+    margin: 10px 5px 10px 3px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.test-marks, .start-test-button {
+    font-size: 20px;
+}
+
+.test-timings {
+    font-size: 17px;
+}
+
+.test-time, .test-date {
+    margin: 0;
+    font-weight: 480;
+}
+
+.test-heading {
+    margin-top: 5px;
+}
+
+.test-marks {
+    margin-top: 8px;
+}
+
+.start-test-button > .btn {
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 20px;
+}

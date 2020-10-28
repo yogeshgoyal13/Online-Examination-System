@@ -1,0 +1,63 @@
+html{
+    /* height: 100vh; */
+    width: 100vw;
+    margin: none;
+}
+nav{
+    margin-bottom: 100px; 
+}
+
+.login-container-admin , .login-container-student{ 
+    text-align: center;
+    position: relative;
+    height: 70vh;
+}
+.login-container-student{
+    border-right: dotted 1px #08A0FF;
+    /* margin: auto; */
+}
+.login-container-title{
+    font-weight: 250;
+}
+.login-container-form{
+    width:50%;
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+}
+.login-container-form label{
+    font-weight: 200;
+    font-size: 1.2rem;
+    margin: 10px 0;
+ } 
+.login-container-form input{
+   width:100%;
+   height: 50px;
+   margin: 0px 0px 10px 0px;
+   padding: 5px;
+   border-radius: 4px;
+   border:solid 1px gray;
+   font-size: 1.rem;
+   font-weight: 200;
+
+} 
+.login-container-form .btn{
+
+    width: 30%;
+    margin-top:50px;
+    border-radius: 25px;
+ } 
+
+.center{
+    width:100%;
+    text-align: center;
+}
+
+.student-login-form{
+    /* margin:auto; */
+    text-align: left;
+}
+.admin-login-form{
+    /* margin:auto; */
+    text-align: left;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta Tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap CSS -->
+        <link 
+            rel="stylesheet" 
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
+            crossorigin="anonymous"
+        >
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/CSS/studentDashboard.css">
+
+        <title>Student Dashboard</title>
+    </head>
+    <body>
+        
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-dark bg-primary fixed-top">
+			<a class="navbar-brand" href="#">
+				<h4>
+					ExamSecure
+				</h4>
+			</a>
+        </nav>
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-link-wrapper">
+                <a href="#" class="sidebar-link">Home</a>
+            </div>
+            <br>
+            <div class="sidebar-link-wrapper">
+                <a href="#" class="sidebar-link">My Profile</a>
+            </div>
+            <br>
+            <div class="sidebar-link-wrapper">
+                <a href="#" class="sidebar-link">Results</a>
+            </div>
+        </div>
+
+        <!-- Content goes here -->
+        <div class="main">
+            <p class="schedule-exam-para">Scheduled Examinations for <%= user.name %>, <%= user.rollNo%></p>
+
+            <% for(let i=0; i<examArray.length; i++){ %>
+                <div class="test-wrapper row">
+                    <div class="test-heading col-lg-3">
+                        <h3><%= examArray[i].description %></h3>
+                    </div>
+
+                    <div class="test-marks col-lg-3">
+                        <p><%= examArray[i].marks %> marks</p>
+                    </div>
+
+                    <div class="test-timings col-lg-3">
+                        <p class="test-time">10:00 AM</p>
+                        <p class="test-date">21st Sept 2020</p>
+                    </div>
+
+                    <div class="start-test-button col-lg-3">
+                        <button class="btn btn-primary btn-lg" type="submit">Start</button>
+                    </div>
+                </div>
+            <% } %>
+            <!-- This is one test object -->
+
+            <!-- <div class="test-wrapper row">
+                <div class="test-heading col-lg-3">
+                    <h3>Software Eng. Test 1</h3>
+                </div>
+
+                <div class="test-marks col-lg-3">
+                    <p>40 Marks</p>
+                </div>
+
+                <div class="test-timings col-lg-3">
+                    <p class="test-time">10:00 AM</p>
+                    <p class="test-date">21st Sept 2020</p>
+                </div>
+
+                <div class="start-test-button col-lg-3">
+                    <button class="btn btn-primary btn-lg" type="submit">Start</button>
+                </div>
+            </div> -->
+
+            <!-- test object ends here -->
+        </div>
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script 
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+            crossorigin="anonymous"
+        ></script>
+        <script 
+             src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" 
+            crossorigin="anonymous"
+        ></script>
+        <script 
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

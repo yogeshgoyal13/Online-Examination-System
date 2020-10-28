@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta Tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap CSS -->
+        <link 
+            rel="stylesheet" 
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
+            crossorigin="anonymous"
+        >
+
+        <title>Create New Exam</title>
+    </head>
+    <body>
+
+        <p>Welcome professor, <%= user.name %></p>
+
+        <form action="/handleExamQuestions" method="POST" class="examForm">
+            <div class="form-group">
+				<label for="adminId">Admin ID</label>
+				<input type="text" class="form-control" id="adminId" name="adminId" value="<%= user.adminId %>" readonly>
+            </div>
+            
+            <div class="form-group">
+				<label for="examId">Exam ID</label>
+				<input type="text" class="form-control" id="examId" placeholder="Enter unique ID" name="examId">
+            </div>
+            
+            <div class="form-group">
+				<label for="description">Description</label>
+				<input type="text" class="form-control" id="description" placeholder="Enter Description" name="description">
+            </div>
+            
+            <div class="form-group">
+				<label for="branch">Branch</label>
+				<input type="text" class="form-control" id="branch" placeholder="Enter branch" name="branch">
+            </div>
+
+            <div class="form-group">
+				<label for="dateAndTime">Date And Time</label>
+				<input type="datetime-local" class="form-control" id="dateAndTime" name="dateAndTime">
+            </div>
+
+            <button type="submit" class="storeExam">Store Exam</button>
+
+
+            <!-- Sample ques start here -->
+            <!-- <div class="form-group">
+                <label for="question1">Question 1</label><br>
+                <textarea name="question1" id="question1" cols="200" rows="3"></textarea><br>
+                
+                <label for="question1_option1">A</label><br>
+                <textarea name="question1_option1" id="question1_option1" cols="200" rows="2"></textarea><br>
+
+                <label for="question1_option2">B</label><br>
+                <textarea name="question1_option2" id="question1_option2" cols="200" rows="2"></textarea><br>
+
+                <label for="question1_option3">C</label><br>
+                <textarea name="question1_option3" id="question1_option3" cols="200" rows="2"></textarea><br>
+
+                <label for="question1_option4">D</label><br>
+                <textarea name="question1_option4" id="question1_option4" cols="200" rows="2"></textarea><br>
+
+                <label for="question1_ca">Correct Option</label><br>
+                <input type="text" name="question1_ca" id="question1_ca">
+            </div> -->
+            <!-- Sample ques end here -->
+
+
+        </form>
+
+        <button id="addNewQuestion">Add New Question</button>
+
+        <!-- Custom Javascript -->
+        <script src="/JS/createExam.js"></script>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script 
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+            crossorigin="anonymous"
+        ></script>
+        <script 
+             src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" 
+            crossorigin="anonymous"
+        ></script>
+        <script 
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" 
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
