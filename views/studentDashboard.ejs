@@ -47,19 +47,19 @@
         <div class="main">
             <p class="schedule-exam-para">Scheduled Examinations for <%= user.name %>, <%= user.rollNo%></p>
 
-            <% for(let i=0; i<examArray.length; i++){ %>
+            <% for(let i=0; i<examsArray.length; i++){ %>
                 <div class="test-wrapper row">
                     <div class="test-heading col-lg-3">
-                        <h3><%= examArray[i].description %></h3>
+                        <h3><%= examsArray[i].description %></h3>
                     </div>
 
                     <div class="test-marks col-lg-3">
-                        <p><%= examArray[i].marks %> marks</p>
+                        <p><%= examsArray[i].marks %> Marks</p>
                     </div>
 
                     <div class="test-timings col-lg-3">
-                        <p class="test-time">10:00 AM</p>
-                        <p class="test-date">21st Sept 2020</p>
+                        <p class="test-time"><%= examsArray[i].time %></p>
+                        <p class="test-date"><%= examsArray[i].date %></p>
                     </div>
 
                     <div class="start-test-button col-lg-3">

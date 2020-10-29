@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
+const moment = require("moment"); // To parse date and time to IST
 
 const app = express();
 
@@ -45,8 +46,10 @@ const examSchema = new mongoose.Schema({
     adminId: String,
     description: String,
     branch: String,
-    dateAndTime : Date,
-    questions: []
+    date: String,
+    time: String,
+    questions: [],
+    marks: Number
 });
 
 const Exam = mongoose.model("Exam", examSchema); 
@@ -82,12 +85,18 @@ app.post("/studentlogin", (req, res)=>{
         }else{
             if(currStudent){
                 if(currStudent.password === loginPassword){
-                    res.render("studentDashboard", {user: currStudent});
+                    Exam.find({branch: currStudent.branch}, (errExam, examsArray)=>{
+                        if(errExam){
+                            console.log(errExam);
+                        }else{
+                            res.render("studentDashboard", {user: currStudent, examsArray: examsArray});
+                        }
+                    });
                 }else{
                     console.log("Password incorrect");
                 }
             }else{
-                console.log("currStudent is having null value");
+                console.log("currStudent is having null value -> /studentlogin post request");
             }
         }
     });
@@ -109,7 +118,7 @@ app.post("/adminlogin", (req, res)=>{
                     console.log("Password incorrect");
                 }
             }else{
-                console.log("currAdmin is having null value");
+                console.log("currAdmin is having null value -> /adminlogin post req");
             }
         }
     });
@@ -117,7 +126,7 @@ app.post("/adminlogin", (req, res)=>{
 
 // student signup form submission
 app.post("/signup", (req, res)=>{
-    const newStudent = new Student({
+    let newStudent = new Student({
         name: req.body.name,
         rollNo: req.body.rollNo,
         branch: req.body.branch,
@@ -131,7 +140,7 @@ app.post("/signup", (req, res)=>{
 
 // admin requested access - form submission
 app.post("/requestadminaccess", (req, res)=>{
-    const newAdmin = new Admin({
+    let newAdmin = new Admin({
         name: req.body.name,
         adminId: req.body.adminId,
         branch: req.body.branch,
@@ -150,7 +159,7 @@ app.post("/createExam", (req, res)=>{
             console.log(err);
         }else{
             if(!user){
-                console.log("User is having null value");
+                console.log("User is having null value -> /createExam post request");
             }else{
                 res.render("createExam", {user: user});
             }
@@ -160,7 +169,7 @@ app.post("/createExam", (req, res)=>{
 
 // admin created exam paper and submitted the create new exam form => handled here
 app.post("/handleExamQuestions", (req, res)=>{
-    const questionPaper = [];
+    let questionPaper = [];
     
     let questionNumber = 1;
     let numberOfQuestions =  (Object.keys(req.body).length - 5)/6;
@@ -188,17 +197,33 @@ app.post("/handleExamQuestions", (req, res)=>{
         numberOfQuestions--;
     }
 
-    const newExam = new Exam({
+    const dateTime = moment(req.body.dateAndTime).format('MMMM Do YYYY, h:mm:ss a');
+    const dateTimeArray = dateTime.split(",");
+
+    let newExam = new Exam({
         examId: req.body.examId,
         adminId: req.body.adminId,
         description: req.body.description,
         branch: req.body.branch,
-        dateAndTime: req.body.dateAndTime,
-        questions: questionPaper
+        date: dateTimeArray[0],
+        time: dateTimeArray[1],
+        questions: questionPaper,
+        marks: (questionPaper.length)*4
     });
 
     newExam.save();
-    res.send("Databse mei exam saved");
+    
+    Admin.findOne({adminId: req.body.adminId}, (err, currAdmin)=>{
+        if(err){
+            console.log(err);
+        }else{
+            if(currAdmin){
+                res.render("adminPortal", {user: currAdmin});
+            }else{
+                console.log("currAdmin is having null value -> /handleexamques post request");
+            }
+        }
+    });
 });
 
 // Setup server
